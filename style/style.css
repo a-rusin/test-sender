@@ -28,41 +28,6 @@ body {
   min-height: 100vh;
 }
 
-body:before,
-body:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: -1;
-  opacity: 1;
-  visibility: visible;
-  transition: opacity var(--change-screens-animation-duration) ease-in-out,
-    visibility var(--change-screens-animation-duration) ease-in-out;
-}
-
-body.feature-active:before,
-body.feature-active:after {
-  opacity: 0;
-  visibility: hidden;
-}
-
-body:before {
-  background-image: url("https://avatars.mds.yandex.net/get-lpc/17800094/2bb7336e-f2d1-4f66-8bdf-4d8f4fcd564a/orig?width=1095&height=869");
-  background-position: top center;
-  top: 0;
-  height: 326rem;
-}
-
-body:after {
-  background-image: url("https://avatars.mds.yandex.net/get-lpc/12602567/ab3ec183-e72e-4a85-8a64-b2a699f28127/orig?width=1099&height=865");
-  background-position: bottom center;
-  bottom: 0;
-  height: 258rem;
-}
-
 sup {
   vertical-align: top;
   position: relative;
@@ -134,6 +99,36 @@ a {
 /* main-screen */
 
 .main-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+}
+
+.main-screen:before,
+.main-screen:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.main-screen:before {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/17800094/2bb7336e-f2d1-4f66-8bdf-4d8f4fcd564a/orig?width=1095&height=869");
+  background-position: top center;
+  top: 0;
+  height: 326rem;
+}
+
+.main-screen:after {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/12602567/ab3ec183-e72e-4a85-8a64-b2a699f28127/orig?width=1099&height=865");
+  background-position: bottom center;
+  bottom: 0;
+  height: 258rem;
 }
 
 .main_screen__hero {
@@ -386,6 +381,7 @@ a {
   text-align: center;
   color: #fff;
   background: #7a55ff;
+  cursor: pointer;
 }
 
 /* copy label - mini toaster */

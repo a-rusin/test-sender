@@ -2,10 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const isDevMode = window.location.host === "a-rusin.github.io" ? false : true;
 
   const CSS_CLASS_SCREEN_HIDE = "screen-hide";
-  const CSS_CLASS_BODY_HIDE_BG = "feature-active";
   const CSS_CLASS_ACTIVE_FEATURE_BOTTOM_BTN = "active";
-
-  const body = document.querySelector("body");
 
   const allScreens = document.querySelectorAll("[data-screen-item]");
   const mainScreen = document.querySelector(".main-screen");
@@ -80,10 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
     activeScreen.classList.remove(CSS_CLASS_SCREEN_HIDE);
 
     if (activeScreen !== mainScreen) {
-      body.classList.add(CSS_CLASS_BODY_HIDE_BG);
       featureBottomBtn.classList.add(CSS_CLASS_ACTIVE_FEATURE_BOTTOM_BTN);
     } else {
-      body.classList.remove(CSS_CLASS_BODY_HIDE_BG);
       featureBottomBtn.classList.remove(CSS_CLASS_ACTIVE_FEATURE_BOTTOM_BTN);
     }
   }

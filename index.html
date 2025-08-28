@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
-    <div class="main-screen screen-hide" data-screen-item="main-screen">
+    <section class="main-screen screen-hide" data-screen-item="main-screen">
       <div class="container">
         <div class="main_screen__hero">
           <h1 class="main_screen__title">Решаю любые задачи</h1>
@@ -79,8 +79,8 @@
           </li>
         </ul>
       </div>
-    </div>
-    <div class="feature-screen screen-active" data-screen-item="generate-text">
+    </section>
+    <section class="feature-screen screen-hide" data-screen-item="generate-text">
       <img
         src="https://avatars.mds.yandex.net/get-lpc/9736426/0738a301-515b-48a7-b19d-49529177ecc3/orig?width=1179&height=921"
         alt="Картинка"
@@ -109,7 +109,36 @@
           </li>
         </ul>
       </div>
-    </div>
+    </section>
+    <section class="feature-screen screen-active" data-screen-item="analyze-text">
+      <img
+        src="https://avatars.mds.yandex.net/get-lpc/12602567/9b46122c-5ce6-4b0c-a04c-7abcbb31ebca/orig?width=1179&height=918"
+        alt="Картинка"
+        class="feature-screen__hero-image"
+      />
+      <div class="container">
+        <div class="feature-screen__hero">
+          <h2 class="feature-screen__hero-title">Прикрепите документ, таблицу или презентацию</h2>
+          <p class="feature-screen__hero-description">
+            Изучу тексты, кратко перескажу, найду нужный фрагмент, переведу на английский и отвечу на вопросы
+          </p>
+        </div>
+        <ul class="feature-screen__cmd-list">
+          <li class="cmd-item">
+            <p class="cmd-item__text">Сделай краткий конспект документа и составь список из основных тезисов</p>
+            <div class="cmd-item__copy-icon"></div>
+          </li>
+          <li class="cmd-item">
+            <p class="cmd-item__text">Перепиши текст простыми словами</p>
+            <div class="cmd-item__copy-icon"></div>
+          </li>
+          <li class="cmd-item">
+            <p class="cmd-item__text">Переведи документ на русский</p>
+            <div class="cmd-item__copy-icon"></div>
+          </li>
+        </ul>
+      </div>
+    </section>
     <div class="fixed-btn">
       <div class="fixed-btn__wrapper">
         <div class="fixed-btn__btn">Попробовать</div>

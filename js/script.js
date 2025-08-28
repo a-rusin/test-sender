@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const isDevMode = true;
+  const isDevMode = window.location.host === "a-rusin.github.io" ? false : true;
 
   const CSS_CLASS_SCREEN_HIDE = "screen-hide";
   const CSS_CLASS_BODY_HIDE_BG = "feature-active";

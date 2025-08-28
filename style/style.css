@@ -1,13 +1,16 @@
 :root {
   --font-size-html: calc(1vw / 14.4);
-  --room-section-animation-duration: 0.2s;
-
-  --connections-section-animation-duration: 0.3s;
 }
 
 @media (min-width: 1441px) {
   :root {
     --font-size-html: 1px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --font-size-html: calc(1vw / 3.6);
   }
 }
 
@@ -20,11 +23,33 @@ body {
   font-size: 16rem;
   overflow-y: visible !important;
   overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
 }
 
-html.no-scroll,
-body.no-scroll {
-  overflow: hidden;
+body:before,
+body:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+body:before {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/17800094/2bb7336e-f2d1-4f66-8bdf-4d8f4fcd564a/orig?width=1095&height=869");
+  background-position: top center;
+  top: 0;
+  height: 326rem;
+}
+
+body:after {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/12602567/ab3ec183-e72e-4a85-8a64-b2a699f28127/orig?width=1099&height=865");
+  background-position: bottom center;
+  bottom: 0;
+  height: 258rem;
 }
 
 sup {
@@ -32,4 +57,177 @@ sup {
   position: relative;
   top: -0.5em;
   font-size: 0.6em;
+}
+
+.grid_wrap {
+  margin: 0;
+  padding: 0;
+}
+
+.lc-page__content {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden !important;
+}
+
+.grid_wrap .lc-page {
+  margin: 0;
+}
+
+* {
+  margin: 0rem;
+  padding: 0rem;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+
+.pc-hide {
+  display: none;
+}
+
+.mob-hide {
+  display: block;
+}
+
+.container {
+  max-width: 326rem;
+  margin: 0 auto;
+}
+
+.main-screen {
+}
+
+.main_screen__hero {
+  padding: 11rem 0 0;
+  text-align: center;
+}
+
+.main_screen__title {
+  font-weight: 500;
+  font-size: 22rem;
+  line-height: 117%;
+  letter-spacing: 0.01em;
+  color: rgba(0, 0, 0, 0.9);
+  padding-top: 106rem;
+  background-image: url(https://avatars.mds.yandex.net/get-lpc/9736426/3d9ba011-76d0-4f0e-a355-7ec7ba2edddc/orig?width=343&height=329);
+  background-size: 110rem;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.main_screen__description {
+  font-weight: 500;
+  font-size: 16rem;
+  line-height: 122%;
+  letter-spacing: 0.01em;
+  color: rgba(0, 0, 0, 0.4);
+  padding-top: 8rem;
+}
+
+.main_screen__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  padding: 30rem 0 0;
+}
+
+.main_screen__list-item {
+}
+
+.feature {
+}
+
+.feature__item {
+  display: flex;
+  gap: 8rem;
+  align-items: center;
+  padding: 10rem;
+  border-radius: 18rem;
+  border: 1rem solid #e6e6ea;
+  cursor: pointer;
+}
+
+.feature__icon {
+  flex: 0 0 30rem;
+  width: 30rem;
+  height: 30rem;
+  background-size: 30rem;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.feature__icon_text {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/9736426/254cdec8-f424-47f2-bdac-b99a683c47ac/orig?width=32&height=32");
+}
+
+.feature__icon_doc {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/9736426/d3f11a60-3fb6-42aa-89b0-c8f1db0fe8f4/orig?width=32&height=32");
+}
+
+.feature__icon_photo {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/9736426/647cb994-8eb5-4fdc-b7f0-5fadb94aaf54/orig?width=32&height=32");
+}
+
+.feature__icon_image-create {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/12602567/c71029a3-b32b-4404-b418-7eac0797abc7/orig?width=32&height=32");
+}
+
+.feature__icon_to-reason {
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/12373972/3f8b2c40-2a1f-49f8-ad5b-298fb2525a2b/orig?width=32&height=32");
+}
+
+.feature__text-content {
+  flex: 0 1 100%;
+}
+
+.feature__title {
+  font-weight: 500;
+  font-size: 15rem;
+  line-height: 125%;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.feature__description {
+  font-weight: 400;
+  font-size: 13rem;
+  line-height: 143%;
+  letter-spacing: 0.01em;
+  padding-top: 4rem;
+}
+
+.feature__arrow-icon {
+  flex: 0 0 24rem;
+  height: 24rem;
+  background-image: url("https://avatars.mds.yandex.net/get-lpc/17495851/45551d6f-95f8-42de-a413-65e0d64020b6/orig?width=24&height=24");
+  background-size: 24rem;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+.main-screen__footer {
+  padding: 26rem 0 58rem;
+  display: flex;
+  flex-direction: column;
+  gap: 18rem;
+}
+
+.main-screen__footer-item {
+}
+
+.main-screen__footer-url {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 14rem;
+  line-height: 133%;
+  color: rgba(0, 0, 0, 0.9);
 }

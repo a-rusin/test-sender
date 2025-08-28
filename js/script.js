@@ -143,4 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
   fixedCtaBtn.addEventListener("click", () => {
     WebApp.close();
   });
+
+  WebApp.onEvent("WebAppOpenMaxLink", () => {
+    WebApp.BackButton.show();
+  });
 });

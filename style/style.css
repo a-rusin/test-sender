@@ -1,5 +1,6 @@
 :root {
   --font-size-html: calc(1vw / 14.4);
+  --change-screens-animation-duration: 0.2s;
 }
 
 @media (min-width: 1441px) {
@@ -36,11 +37,16 @@ body:after {
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: -1;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out,
+    visibility var(--change-screens-animation-duration) ease-in-out;
 }
 
 body.feature-active:before,
 body.feature-active:after {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 body:before {
@@ -111,12 +117,18 @@ a {
   margin: 0 auto;
 }
 
-.screen-hide {
-  display: none;
+.screen-animation {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration),
+    visibility var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration);
 }
 
-.screen-active {
-  display: block;
+.screen-hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out,
+    visibility var(--change-screens-animation-duration) ease-in-out;
 }
 
 /* main-screen */
@@ -249,6 +261,10 @@ a {
 /* feature-screen */
 
 .feature-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .feature-screen__hero-image {
@@ -318,15 +334,25 @@ a {
 
 .fixed-btn {
   position: fixed;
-  bottom: 0;
+  bottom: -100rem;
   left: 0;
   right: 0;
   z-index: 10;
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out,
+    visibility var(--change-screens-animation-duration) ease-in-out,
+    bottom var(--change-screens-animation-duration) ease-in-out;
 }
 
 .fixed-btn.active {
-  display: block;
+  bottom: 0;
+
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration),
+    visibility var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration),
+    bottom var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration);
 }
 
 .fixed-btn__wrapper {

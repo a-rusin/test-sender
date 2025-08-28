@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const isDevMode = true;
 
-  const CSS_CLASS_SCREEN_ACTIVE = "screen-active";
   const CSS_CLASS_SCREEN_HIDE = "screen-hide";
   const CSS_CLASS_BODY_HIDE_BG = "feature-active";
   const CSS_CLASS_ACTIVE_FEATURE_BOTTOM_BTN = "active";
@@ -33,6 +32,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (featureAtr) {
         showFeatureSection(featureAtr);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 200);
       }
     });
   });
@@ -74,15 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function controlContent(activeScreen) {
-    allScreens.forEach((screen) => {
-      if (screen === activeScreen) {
-        screen.classList.add(CSS_CLASS_SCREEN_ACTIVE);
-        screen.classList.remove(CSS_CLASS_SCREEN_HIDE);
-      } else {
-        screen.classList.add(CSS_CLASS_SCREEN_HIDE);
-        screen.classList.remove(CSS_CLASS_SCREEN_ACTIVE);
-      }
-    });
+    allScreens.forEach((screen) => screen.classList.add(CSS_CLASS_SCREEN_HIDE));
+    activeScreen.classList.remove(CSS_CLASS_SCREEN_HIDE);
 
     if (activeScreen !== mainScreen) {
       body.classList.add(CSS_CLASS_BODY_HIDE_BG);

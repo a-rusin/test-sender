@@ -16,6 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const featureBottomBtn = document.querySelector(".fixed-btn");
 
+  const toasterSection = document.querySelector(".copy-label");
+  const toasterSectionSuccessMsg = document.querySelector(".copy-label__text_success");
+  const toasterSectionErrorMsg = document.querySelector(".copy-label__text_error");
+  const TOASTER_STATUS = {
+    SUCCESS: "success",
+    ERROR: "error",
+  };
+  let successMsgTimerId;
+
   initBackBtn();
 
   featuresMainScreen.forEach((feature) => {
@@ -34,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (copyText && copyText.textContent) {
         fallbackCopyTextToClipboard(copyText.textContent);
+        showToaster();
       }
     });
   });
@@ -49,8 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       document.execCommand("copy");
       console.log("[DEBUG INFO]: Текст успешно скопирован!");
+      changeToasterContent(TOASTER_STATUS.SUCCESS);
     } catch (err) {
       console.error("[DEBUG INFO]: Ошибка при копировании: ", err);
+      changeToasterContent(TOASTER_STATUS.ERROR);
     }
 
     document.body.removeChild(textarea);
@@ -92,6 +104,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else {
       // logic for backButton MAX bot app
+    }
+  }
+
+  function changeToasterContent(type) {
+    if (type === TOASTER_STATUS.SUCCESS) {
+      toasterSectionSuccessMsg.style.display = "block";
+      toasterSectionErrorMsg.style.display = "none";
+    } else if (type === TOASTER_STATUS.ERROR) {
+      toasterSectionSuccessMsg.style.display = "none";
+      toasterSectionErrorMsg.style.display = "block";
+    }
+  }
+
+  function showToaster() {
+    if (toasterSection.classList.contains("active")) {
+      toasterSection.classList.remove("active");
+
+      if (successMsgTimerId) {
+        clearTimeout(successMsgTimerId);
+      }
+
+      successMsgTimerId = setTimeout(() => {
+        toasterSection.classList.add("active");
+      }, 10);
+    } else {
+      toasterSection.classList.add("active");
     }
   }
 });

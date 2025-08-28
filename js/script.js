@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fixedCtaBtn = document.querySelector(".fixed-btn__btn");
 
+  const iframe = document.querySelector(".iframe");
+
   initBackBtn();
 
   featuresMainScreen.forEach((feature) => {
@@ -115,7 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function backBtnHandler() {
     if (isOpenFooterLink) {
-      document.location.href = PAGE_MAIN_URL;
+      iframe.classList.remove("active");
+      isOpenFooterLink = false;
+      WebApp.BackButton.hide();
     } else {
       controlContent(mainScreen);
       WebApp.BackButton.hide();
@@ -126,11 +130,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   footerUrls.forEach((url) => {
-    url.addEventListener("click", () => {
+    url.addEventListener("click", (e) => {
+      e.preventDefault();
       isOpenFooterLink = true;
       WebApp.BackButton.show();
+      const urlHref = url.getAttribute("href");
+      loadInIframe(urlHref);
     });
   });
+
+  function loadInIframe(url) {
+    iframe.classList.add("active");
+    iframe.src = url; // Устанавливает новый URL для iframe
+  }
 
   function changeToasterContent(type) {
     if (type === TOASTER_STATUS.SUCCESS) {

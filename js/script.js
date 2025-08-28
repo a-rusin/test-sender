@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const isDevMode = window.location.host === "a-rusin.github.io" ? false : true;
+  const PAGE_MAIN_URL = "https://a-rusin.github.io/test-sender/";
+  const PAGE_HOST = "a-rusin.github.io";
+
+  const isDevMode = window.location.host === PAGE_HOST ? false : true;
+
+  let isOpenFooterLink = false;
+  const footerUrls = document.querySelectorAll(".main-screen__footer-url");
 
   const CSS_ANIMATION_DURATION = 200;
 
@@ -33,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const featureAtr = feature.getAttribute("data-feature-item");
 
       if (featureAtr) {
+        isOpenFooterLink = false;
         showFeatureSection(featureAtr);
         setTimeout(() => {
           window.scrollTo(0, 0);
@@ -107,12 +114,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function backBtnHandler() {
-    controlContent(mainScreen);
-    WebApp.BackButton.hide();
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, CSS_ANIMATION_DURATION);
+    if (isOpenFooterLink) {
+      document.location.href = PAGE_MAIN_URL;
+    } else {
+      controlContent(mainScreen);
+      WebApp.BackButton.hide();
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, CSS_ANIMATION_DURATION);
+    }
   }
+
+  footerUrls.forEach((url) => {
+    url.addEventListener("click", () => {
+      isOpenFooterLink = true;
+      WebApp.BackButton.show();
+    });
+  });
 
   function changeToasterContent(type) {
     if (type === TOASTER_STATUS.SUCCESS) {
@@ -142,9 +160,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fixedCtaBtn.addEventListener("click", () => {
     WebApp.close();
-  });
-
-  WebApp.onEvent("WebAppOpenMaxLink", () => {
-    WebApp.BackButton.show();
   });
 });

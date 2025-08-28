@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const isDevMode = window.location.host === "a-rusin.github.io" ? false : true;
 
+  const CSS_ANIMATION_DURATION = 200;
+
   const CSS_CLASS_SCREEN_HIDE = "screen-hide";
   const CSS_CLASS_ACTIVE_FEATURE_BOTTOM_BTN = "active";
 
+  const screenContentSection = document.querySelector(".screen-content");
   const allScreens = document.querySelectorAll("[data-screen-item]");
   const mainScreen = document.querySelector(".main-screen");
 
@@ -31,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showFeatureSection(featureAtr);
         setTimeout(() => {
           window.scrollTo(0, 0);
-        }, 200);
+        }, CSS_ANIMATION_DURATION);
       }
     });
   });
@@ -81,6 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       featureBottomBtn.classList.remove(CSS_CLASS_ACTIVE_FEATURE_BOTTOM_BTN);
     }
+
+    setTimeout(() => {
+      const sectionHeight = activeScreen.offsetHeight;
+      screenContentSection.style.height = `${sectionHeight}px`;
+    }, CSS_ANIMATION_DURATION);
   }
 
   function initBackBtn() {
@@ -90,6 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
         devBtnBack.style.display = "block";
         devBtnBack.addEventListener("click", () => {
           controlContent(mainScreen);
+          setTimeout(() => {
+            window.scrollTo(0, 0);
+          }, CSS_ANIMATION_DURATION);
         });
       }
     } else {

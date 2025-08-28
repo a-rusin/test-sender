@@ -137,7 +137,7 @@ a {
   color: rgba(0, 0, 0, 0.9);
   padding-top: 106rem;
   background-image: url(https://avatars.mds.yandex.net/get-lpc/9736426/3d9ba011-76d0-4f0e-a355-7ec7ba2edddc/orig?width=343&height=329);
-  background-size: 110rem;
+  background-size: 105rem;
   background-position: top center;
   background-repeat: no-repeat;
 }
@@ -430,4 +430,17 @@ a {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+/* dev btn */
+
+.dev-btn {
+  position: fixed;
+  z-index: 20;
+  top: 10rem;
+  left: 10rem;
+  background-color: #000;
+  color: #fff;
+  padding: 8rem;
+  font-size: 12rem;
 }

@@ -82,7 +82,7 @@ a {
 
 .screen-animation {
   opacity: 1;
-  visibility: all;
+  visibility: visible;
   pointer-events: all;
   transition: opacity var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration),
     visibility var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration);
@@ -104,6 +104,7 @@ a {
 /* main-screen */
 
 .main-screen {
+  min-height: 100vh;
 }
 
 .main-screen:before,

@@ -65,7 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // Функция для fallback метода копирования
   function fallbackCopyTextToClipboard(text) {
     const textarea = document.createElement("textarea");
-    textarea.value = text;
+    textarea.value = text
+      .replace(/(\r\n|\n)/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
     textarea.style.position = "fixed"; // Избегаем скроллинга страницы
     document.body.appendChild(textarea);
     textarea.focus();

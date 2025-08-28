@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const body = document.querySelector("body");
 
-  const featuresMainScreen = document.querySelectorAll(".feature");
   const allScreens = document.querySelectorAll("[data-screen-item]");
   const mainScreen = document.querySelector(".main-screen");
+
+  const featuresMainScreen = document.querySelectorAll(".feature");
+  const featuresCmdsSections = document.querySelectorAll(".cmd-item");
 
   const featureBottomBtn = document.querySelector(".fixed-btn");
 
@@ -25,6 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+
+  featuresCmdsSections.forEach((cmd) => {
+    cmd.addEventListener("click", () => {
+      const copyText = cmd.querySelector(".cmd-item__text");
+
+      if (copyText && copyText.textContent) {
+        fallbackCopyTextToClipboard(copyText.textContent);
+      }
+    });
+  });
+
+  // Функция для fallback метода копирования
+  function fallbackCopyTextToClipboard(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed"; // Избегаем скроллинга страницы
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      console.log("[DEBUG INFO]: Текст успешно скопирован!");
+    } catch (err) {
+      console.error("[DEBUG INFO]: Ошибка при копировании: ", err);
+    }
+
+    document.body.removeChild(textarea);
+  }
 
   function showFeatureSection(featureDataAtr) {
     const featureSection = document.querySelector(`.feature-screen[data-screen-item="${featureDataAtr}"]`);

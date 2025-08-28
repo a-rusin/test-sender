@@ -253,8 +253,9 @@ a {
 
 .feature-screen__hero-image {
   display: block;
-  width: 100%;
-  height: 280rem;
+  margin: 0 auto;
+  max-width: 360rem;
+  height: 281rem;
 }
 
 .feature-screen__hero {
@@ -291,6 +292,7 @@ a {
   padding: 10rem;
   border-radius: 15rem;
   border: 1rem solid #e6e6ea;
+  cursor: pointer;
 }
 
 .cmd-item__text {

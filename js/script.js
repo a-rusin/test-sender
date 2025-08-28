@@ -24,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   let successMsgTimerId;
 
+  const fixedCtaBtn = document.querySelector(".fixed-btn__btn");
+
   initBackBtn();
 
   featuresMainScreen.forEach((feature) => {
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           window.scrollTo(0, 0);
         }, CSS_ANIMATION_DURATION);
+        WebApp.BackButton.show();
       }
     });
   });
@@ -96,16 +99,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const devBtnBack = document.querySelector(".dev-btn");
       if (devBtnBack) {
         devBtnBack.style.display = "block";
-        devBtnBack.addEventListener("click", () => {
-          controlContent(mainScreen);
-          setTimeout(() => {
-            window.scrollTo(0, 0);
-          }, CSS_ANIMATION_DURATION);
-        });
+        devBtnBack.addEventListener("click", backBtnHandler);
       }
     } else {
-      // logic for backButton MAX bot app
+      WebApp.BackButton.onClick(backBtnHandler);
     }
+  }
+
+  function backBtnHandler() {
+    controlContent(mainScreen);
+    WebApp.BackButton.hide();
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, CSS_ANIMATION_DURATION);
   }
 
   function changeToasterContent(type) {
@@ -133,4 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
       toasterSection.classList.add("active");
     }
   }
+
+  fixedCtaBtn.addEventListener("click", () => {
+    WebApp.close();
+  });
 });

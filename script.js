@@ -1,22 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("[main page] js run");
 
-  const iframe = document.querySelector("#my-iframe");
-
-  const btnTest = document.querySelector(".btn-test");
   const btnClose = document.querySelector(".btn-close");
+  const btnBackShow = document.querySelector(".btn-back-show");
+  const btnBackHide = document.querySelector(".btn-back-hide");
 
   btnClose.addEventListener("click", () => {
-    sendMessage("close");
+    sendMessage({ type: "WebAppClose" });
   });
 
-  btnTest.addEventListener("click", () => {
-    sendMessage("test");
+  btnBackShow.addEventListener("click", () => {
+    sendMessage({ type: "WebAppSetupBackButton", isVisible: true });
   });
 
-  function sendMessage(eventType) {
-    // const data = { eventType };
-    // iframe.contentWindow.postMessage(JSON.stringify(data), "*");
-    window.parent.postMessage(JSON.stringify({ type: "WebAppClose" }), "*");
+  btnBackHide.addEventListener("click", () => {
+    sendMessage({ type: "WebAppSetupBackButton", isVisible: false });
+  });
+
+  function sendMessage(event) {
+    console.log(event);
+    window.parent.postMessage(JSON.stringify(event), "*");
   }
 });

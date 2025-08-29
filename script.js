@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("message", function (event) {
-    console.log(event);
+    if (event.origin === "https://web.max.ru") {
+      console.log("my script go!");
+      console.log(JSON.parse(event.data));
+    }
   });
 });

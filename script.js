@@ -16,6 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function sendMessage(eventType) {
     const data = { eventType };
-    iframe.contentWindow.postMessage(JSON.stringify(data), iframe.src);
+    iframe.contentWindow.postMessage(JSON.stringify(data), "*");
   }
 });

@@ -21,4 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(event);
     window.parent.postMessage(JSON.stringify(event), "*");
   }
+
+  window.addEventListener("message", function (event) {
+    console.log(event);
+  });
 });

@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function sendMessage(eventType) {
-    const data = { eventType };
-    iframe.contentWindow.postMessage(JSON.stringify(data), "*");
+    // const data = { eventType };
+    // iframe.contentWindow.postMessage(JSON.stringify(data), "*");
+    window.parent.postMessage(JSON.stringify({ type: "WebAppClose" }), "*");
   }
 });

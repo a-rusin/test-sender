@@ -16,6 +16,8 @@
   --feature-icon-photo-url: url("https://avatars.mds.yandex.net/get-lpc/9736426/647cb994-8eb5-4fdc-b7f0-5fadb94aaf54/orig?width=32&height=32");
   --feature-icon-reason-url: url("https://avatars.mds.yandex.net/get-lpc/12373972/3f8b2c40-2a1f-49f8-ad5b-298fb2525a2b/orig?width=32&height=32");
 
+  --arrow-icon-url: url("https://avatars.mds.yandex.net/get-lpc/17495851/45551d6f-95f8-42de-a413-65e0d64020b6/orig?width=24&height=24");
+
   --copy-icon-url: url("https://avatars.mds.yandex.net/get-lpc/16904900/04bb5583-2aea-4b63-ae77-ee133f0cd6c8/orig?width=24&height=24");
 
   --dev-btn-bg-color: #000;
@@ -27,6 +29,7 @@
 
   --try-btn-bg-color: #7a55ff;
   --try-btn-font-color: #fff;
+  --try-btn-color-gradient-before: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%);
 
   --main-screen-gradient-img-before-url: url("https://avatars.mds.yandex.net/get-lpc/17800094/2bb7336e-f2d1-4f66-8bdf-4d8f4fcd564a/orig?width=1095&height=869");
   --main-screen-gradient-img-after-url: url("https://avatars.mds.yandex.net/get-lpc/12602567/ab3ec183-e72e-4a85-8a64-b2a699f28127/orig?width=1099&height=865");
@@ -46,6 +49,36 @@
 
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color-primary: #161617;
+
+    --font-color-primary: rgba(255, 255, 255, 0.9);
+    --font-color-secondary: rgba(255, 255, 255, 0.4);
+
+    --border-color-primary: rgba(255, 255, 255, 0.1);
+
+    --feature-icon-text-url: url("https://avatars.mds.yandex.net/get-lpc/17495851/6550f2db-a039-4c96-81f4-86d7f169fe9b/orig?width=32&height=32");
+    --feature-icon-image-create-url: url("https://avatars.mds.yandex.net/get-lpc/16405748/1dc0789c-ea26-43dc-a291-37863f8120e8/orig?width=32&height=32");
+    --feature-icon-doc-url: url("https://avatars.mds.yandex.net/get-lpc/16904900/9bd4a2b7-4aff-401c-a1c4-28329bcc20f2/orig?width=32&height=32");
+    --feature-icon-photo-url: url("https://avatars.mds.yandex.net/get-lpc/16904900/98334cda-0175-405d-93d9-c740974c29e7/orig?width=32&height=32");
+    --feature-icon-reason-url: url("https://avatars.mds.yandex.net/get-lpc/16405748/82517a0f-3c89-47be-8817-aaa6148d5af9/orig?width=32&height=32");
+
+    --arrow-icon-url: url("https://avatars.mds.yandex.net/get-lpc/17495851/1e52d1b1-5dd8-49c1-b07a-8feb38cb6055/orig?width=24&height=24");
+
+    --copy-icon-url: url("https://avatars.mds.yandex.net/get-lpc/17800094/997175a0-8d62-42ab-b76b-ffdf42e479a5/orig?width=24&height=24");
+
+    --dev-btn-bg-color: #000;
+    --dev-btn-font-color: #fff;
+
+    --copy-label-bg-color: #fff;
+    --copy-label-font-color: #25252c;
+    --copy-label-font-color-error: #ff7e7e;
+
+    --try-btn-color-gradient-before: linear-gradient(180deg, rgba(22, 22, 23, 0) 0%, rgba(22, 22, 23, 1) 30%);
+
+    --main-screen-gradient-img-before-url: url("https://avatars.mds.yandex.net/get-lpc/9736426/46d8a6e4-f9af-465c-ba44-1a530185e89b/orig?width=1134&height=854");
+    --main-screen-gradient-img-after-url: url("https://avatars.mds.yandex.net/get-lpc/9736426/c2802604-1313-46d1-9f9e-ec760b1033e7/orig?width=1132&height=867");
+  }
 }
 
 html {
@@ -270,7 +303,7 @@ a {
 .feature__arrow-icon {
   flex: 0 0 24rem;
   height: 24rem;
-  background-image: url("https://avatars.mds.yandex.net/get-lpc/17495851/45551d6f-95f8-42de-a413-65e0d64020b6/orig?width=24&height=24");
+  background-image: var(--arrow-icon-url);
   background-size: 24rem;
   background-position: top center;
   background-repeat: no-repeat;
@@ -401,7 +434,7 @@ a {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 30%);
+  background: var(--try-btn-color-gradient-before);
   z-index: -1;
 }
 

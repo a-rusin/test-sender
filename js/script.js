@@ -32,7 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fixedCtaBtn = document.querySelector(".fixed-btn__btn");
 
-  const iframe = document.querySelector(".iframe");
+  const iframeBrowser = document.querySelector(".iframe-browser");
+
+  const iframeS3 = document.querySelector(".iframe-s3");
+  let iframeS3Loaded = false;
+
+  iframeS3.addEventListener("load", function () {
+    iframeS3Loaded = true;
+  });
 
   initBackBtn();
 
@@ -46,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           window.scrollTo(0, 0);
         }, CSS_ANIMATION_DURATION);
-        WebApp.BackButton.show();
+        webAppSetupBackButton(true);
       }
     });
   });
@@ -114,18 +121,18 @@ document.addEventListener("DOMContentLoaded", () => {
         devBtnBack.addEventListener("click", backBtnHandler);
       }
     } else {
-      WebApp.BackButton.onClick(backBtnHandler);
+      // WebApp.BackButton.onClick(backBtnHandler);
     }
   }
 
   function backBtnHandler() {
     if (isOpenFooterLink) {
-      iframe.classList.remove("active");
+      iframeBrowser.classList.remove("active");
       isOpenFooterLink = false;
-      WebApp.BackButton.hide();
+      webAppSetupBackButton(false);
     } else {
       controlContent(mainScreen);
-      WebApp.BackButton.hide();
+      webAppSetupBackButton(false);
       setTimeout(() => {
         window.scrollTo(0, 0);
       }, CSS_ANIMATION_DURATION);
@@ -136,15 +143,15 @@ document.addEventListener("DOMContentLoaded", () => {
     url.addEventListener("click", (e) => {
       e.preventDefault();
       isOpenFooterLink = true;
-      WebApp.BackButton.show();
+      webAppSetupBackButton(true);
       const urlHref = url.getAttribute("href");
       loadInIframe(urlHref);
     });
   });
 
   function loadInIframe(url) {
-    iframe.classList.add("active");
-    iframe.src = url; // Устанавливает новый URL для iframe
+    iframeBrowser.classList.add("active");
+    iframeBrowser.src = url; // Устанавливает новый URL для iframeBrowser
   }
 
   function changeToasterContent(type) {
@@ -174,6 +181,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   fixedCtaBtn.addEventListener("click", () => {
-    WebApp.close();
+    webAppClose();
+  });
+
+  function webAppClose() {
+    sendMessage({ type: "WebAppClose" });
+  }
+
+  function webAppSetupBackButton(isVisible) {
+    sendMessage({ type: "WebAppSetupBackButton", isVisible });
+  }
+
+  function sendMessage(event) {
+    window.parent.postMessage(JSON.stringify(event), "https://web.max.ru");
+  }
+
+  window.addEventListener("message", function (event) {
+    if (event.origin === "https://web.max.ru") {
+      console.log("my script go!");
+      console.log(event.data);
+    }
   });
 });

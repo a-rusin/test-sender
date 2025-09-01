@@ -120,8 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
         devBtnBack.style.display = "block";
         devBtnBack.addEventListener("click", backBtnHandler);
       }
-    } else {
-      // WebApp.BackButton.onClick(backBtnHandler);
     }
   }
 
@@ -197,9 +195,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("message", function (event) {
-    if (event.origin === "https://web.max.ru") {
-      console.log("my script go!");
-      console.log(event.data);
+    if (event.origin === "https://web.max.ru" && event.data && event.data === '{"type":"WebAppBackButtonPressed"}') {
+      backBtnHandler();
     }
   });
 });

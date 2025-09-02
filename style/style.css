@@ -538,6 +538,7 @@ a {
   color: var(--dev-btn-font-color);
   padding: 8rem;
   font-size: 12rem;
+  cursor: pointer;
 }
 
 .iframe-browser {

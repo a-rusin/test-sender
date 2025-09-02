@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const isDevMode = window.location.host === PAGE_HOST ? false : true;
 
-  let isOpenFooterLink = false;
   const footerUrls = document.querySelectorAll(".main-screen__footer-url");
 
   const CSS_ANIMATION_DURATION = 200;
@@ -32,8 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fixedCtaBtn = document.querySelector(".fixed-btn__btn");
 
-  const iframeBrowser = document.querySelector(".iframe-browser");
-
   const iframeS3 = document.querySelector(".iframe-s3");
   let iframeS3Loaded = false;
 
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const featureAtr = feature.getAttribute("data-feature-item");
 
       if (featureAtr) {
-        isOpenFooterLink = false;
         showFeatureSection(featureAtr);
         setTimeout(() => {
           window.scrollTo(0, 0);
@@ -124,33 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function backBtnHandler() {
-    if (isOpenFooterLink) {
-      iframeBrowser.classList.remove("active");
-      isOpenFooterLink = false;
-      webAppSetupBackButton(false);
-    } else {
-      controlContent(mainScreen);
-      webAppSetupBackButton(false);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, CSS_ANIMATION_DURATION);
-    }
+    controlContent(mainScreen);
+    webAppSetupBackButton(false);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, CSS_ANIMATION_DURATION);
   }
 
   footerUrls.forEach((url) => {
     url.addEventListener("click", (e) => {
       e.preventDefault();
-      isOpenFooterLink = true;
-      webAppSetupBackButton(true);
       const urlHref = url.getAttribute("href");
-      loadInIframe(urlHref);
+      webAppOpenLink(urlHref);
     });
   });
-
-  function loadInIframe(url) {
-    iframeBrowser.classList.add("active");
-    iframeBrowser.src = url; // Устанавливает новый URL для iframeBrowser
-  }
 
   function changeToasterContent(type) {
     if (type === TOASTER_STATUS.SUCCESS) {
@@ -188,6 +171,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function webAppSetupBackButton(isVisible) {
     sendMessage({ type: "WebAppSetupBackButton", isVisible });
+  }
+
+  function webAppOpenLink(url) {
+    sendMessage({ type: "WebAppOpenLink", url });
   }
 
   function sendMessage(event) {

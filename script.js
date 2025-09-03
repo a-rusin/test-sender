@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // renderContent(window.WebViewHandler);
   }
 
-  app.receiveEvent("WebAppBackButtonPressed", () => {
-    renderContent("WebAppBackButtonPressed");
-  });
+  // app.receiveEvent("WebAppBackButtonPressed", () => {
+  //   renderContent("WebAppBackButtonPressed");
+  // });
 
   // window.addEventListener("message", function (event) {
   //   if (event.origin === "https://web.max.ru") {
@@ -44,4 +44,44 @@ document.addEventListener("DOMContentLoaded", () => {
     div.textContent = content ? JSON.stringify(content) : "undefined";
     root.appendChild(div);
   }
+
+  // Пример объекта с методами
+  class MyClass {
+    test = "123";
+  }
+
+  MyClass.prototype.hiddenMethod = function () {};
+
+  const myObject = new MyClass();
+
+  // Функция для получения всех методов, включая методы прототипа
+  function getAllMethods(obj) {
+    const methods = [];
+    let currentObj = obj;
+
+    do {
+      const properties = Object.getOwnPropertyNames(currentObj);
+      properties.forEach((property) => {
+        if (typeof obj[property] === "function" && !methods.includes(property)) {
+          methods.push(property);
+        }
+      });
+      currentObj = Object.getPrototypeOf(currentObj);
+    } while (currentObj);
+
+    return methods;
+  }
+
+  // Получение всех методов объекта
+  const allMethods = getAllMethods(myObject);
+  const allMethods2 = getAllMethods(app);
+
+  // Добавление методов в HTML
+  allMethods.forEach((method) => {
+    const listItem = document.createElement("div");
+    listItem.textContent = method;
+    root.appendChild(listItem);
+  });
+
+  renderContent(app);
 });

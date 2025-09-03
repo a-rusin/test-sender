@@ -8,22 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnBackHide = document.querySelector(".btn-back-hide");
 
   btnClose.addEventListener("click", () => {
-    sendMessage({ type: "WebAppClose" });
+    sendMessage("WebAppClose");
   });
 
   btnBackShow.addEventListener("click", () => {
-    sendMessage({ type: "WebAppSetupBackButton", isVisible: true });
+    sendMessage("WebAppSetupBackButton", { isVisible: true });
   });
 
   btnBackHide.addEventListener("click", () => {
-    sendMessage({ type: "WebAppSetupBackButton", isVisible: false });
+    sendMessage("WebAppSetupBackButton", { isVisible: false });
   });
 
-  function sendMessage(event) {
-    console.log(event);
-    // window.parent.postMessage(JSON.stringify(event), "https://web.max.ru");
-    // window.WebViewHandler.postEvent(JSON.stringify(event), "https://web.max.ru");
-    renderContent(window.WebViewHandler);
+  function sendMessage(event, options) {
+    // window.parent.postMessage(JSON.stringify({ type: event, ...options }), "https://web.max.ru");
+    window.WebViewHandler.postEvent(event, JSON.stringify(options));
+    // renderContent(window.WebViewHandler);
   }
 
   window.addEventListener("message", function (event) {

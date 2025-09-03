@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("message", function (event) {
     if (event.origin === "https://web.max.ru" && event.data && event.data === '{"type":"WebAppBackButtonPressed"}') {
-      backBtnHandler();
+      // backBtnHandler();
     }
   });
 

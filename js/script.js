@@ -1,11 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const PAGE_MAIN_URL = "https://a-rusin.github.io/test-sender/";
-  const PAGE_HOST = "a-rusin.github.io";
-
-  const isDevMode = window.location.host === PAGE_HOST ? false : true;
-
-  const footerUrls = document.querySelectorAll(".main-screen__footer-url");
-
   const CSS_ANIMATION_DURATION = 200;
 
   const CSS_CLASS_SCREEN_HIDE = "screen-hide";
@@ -31,14 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fixedCtaBtn = document.querySelector(".fixed-btn__btn");
 
-  const iframeS3 = document.querySelector(".iframe-s3");
-  let iframeS3Loaded = false;
+  const footerUrls = document.querySelectorAll(".main-screen__footer-url");
 
-  iframeS3.addEventListener("load", function () {
-    iframeS3Loaded = true;
-  });
+  const backBtn = document.querySelector(".back-btn");
 
-  initBackBtn();
+  backBtn.addEventListener("click", backBtnHandler);
 
   featuresMainScreen.forEach((feature) => {
     feature.addEventListener("click", () => {
@@ -109,16 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, CSS_ANIMATION_DURATION);
   }
 
-  function initBackBtn() {
-    if (isDevMode) {
-      const devBtnBack = document.querySelector(".dev-btn");
-      if (devBtnBack) {
-        devBtnBack.style.display = "block";
-        devBtnBack.addEventListener("click", backBtnHandler);
-      }
-    }
-  }
-
   function backBtnHandler() {
     controlContent(mainScreen);
     webAppSetupBackButton(false);
@@ -170,7 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function webAppSetupBackButton(isVisible) {
-    sendMessage("WebAppSetupBackButton", { isVisible });
+    // sendMessage("WebAppSetupBackButton", { isVisible });
+    if (isVisible) {
+      backBtn.classList.add("active");
+    } else {
+      backBtn.classList.remove("active");
+    }
   }
 
   function webAppOpenLink(url) {

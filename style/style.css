@@ -20,8 +20,8 @@
 
   --copy-icon-url: url("https://avatars.mds.yandex.net/get-lpc/16904900/04bb5583-2aea-4b63-ae77-ee133f0cd6c8/orig?width=24&height=24");
 
-  --dev-btn-bg-color: #000;
-  --dev-btn-font-color: #fff;
+  --back-btn-bg-color: #000;
+  --back-btn-font-color: #fff;
 
   --copy-label-bg-color: #25252c;
   --copy-label-font-color: #fff;
@@ -67,9 +67,8 @@
 
     --copy-icon-url: url("https://avatars.mds.yandex.net/get-lpc/17800094/997175a0-8d62-42ab-b76b-ffdf42e479a5/orig?width=24&height=24");
 
-    --dev-btn-bg-color: #000;
-    --dev-btn-font-color: #fff;
-
+    --back-btn-bg-color: #fff;
+    --back-btn-font-color: #000;
     --copy-label-bg-color: #fff;
     --copy-label-font-color: #25252c;
     --copy-label-font-color-error: #ff7e7e;
@@ -527,21 +526,29 @@ a {
   }
 }
 
-/* dev btn */
+/* back btn */
 
-.dev-btn {
+.back-btn {
   position: fixed;
   z-index: 200;
   top: 10rem;
   left: 10rem;
-  background-color: var(--dev-btn-bg-color);
-  color: var(--dev-btn-font-color);
+  background-color: var(--back-btn-bg-color);
+  color: var(--back-btn-font-color);
   padding: 8rem;
   font-size: 12rem;
   cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out,
+    visibility var(--change-screens-animation-duration) ease-in-out;
 }
 
-.iframe-s3 {
-  z-index: -2;
-  position: fixed;
+.back-btn.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transition: opacity var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration),
+    visibility var(--change-screens-animation-duration) ease-in-out var(--change-screens-animation-duration);
 }

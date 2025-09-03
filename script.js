@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function sendMessage(event) {
     console.log(event);
-    window.parent.postMessage(JSON.stringify(event), "https://web.max.ru");
+    // window.parent.postMessage(JSON.stringify(event), "https://web.max.ru");
+    window.WebViewHandler.postMessage(JSON.stringify(event), "https://web.max.ru");
   }
 
   window.addEventListener("message", function (event) {

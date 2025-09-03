@@ -166,19 +166,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function webAppClose() {
-    sendMessage({ type: "WebAppClose" });
+    sendMessage("WebAppClose");
   }
 
   function webAppSetupBackButton(isVisible) {
-    sendMessage({ type: "WebAppSetupBackButton", isVisible });
+    sendMessage("WebAppSetupBackButton", { isVisible });
   }
 
   function webAppOpenLink(url) {
-    sendMessage({ type: "WebAppOpenLink", url });
+    sendMessage("WebAppOpenLink", { url });
   }
 
-  function sendMessage(event) {
-    window.parent.postMessage(JSON.stringify(event), "https://web.max.ru");
+  function sendMessage(eventType, options) {
+    window.parent.postMessage(JSON.stringify({ type: eventType, ...options }), "https://web.max.ru");
   }
 
   window.addEventListener("message", function (event) {

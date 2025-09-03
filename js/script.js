@@ -178,7 +178,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function sendMessage(eventType, options) {
-    window.parent.postMessage(JSON.stringify({ type: eventType, ...options }), "https://web.max.ru");
+    if (window.WebViewHandler) {
+      window.WebViewHandler.postEvent(eventType, JSON.stringify(options));
+      return;
+    } else {
+      window.parent.postMessage(JSON.stringify({ type: eventType, ...options }), "https://web.max.ru");
+    }
   }
 
   window.addEventListener("message", function (event) {

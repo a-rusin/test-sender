@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function sendMessage(eventType, options) {
-    if (isIframe()) {
-      window.parent.postMessage(JSON.stringify({ type: eventType, ...options }), "https://web.max.ru");
-    } else {
+    if (window.WebViewHandler) {
       window.WebViewHandler.postEvent(eventType, JSON.stringify(options));
+    } else {
+      window.parent.postMessage(JSON.stringify({ type: eventType, ...options }), "https://web.max.ru");
     }
   }
 

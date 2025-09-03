@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // renderContent(window.WebViewHandler);
   }
 
-  app.onEvent("WebAppBackButtonPressed", () => {
+  app.receiveEvent("WebAppBackButtonPressed", () => {
     renderContent("WebAppBackButtonPressed");
   });
 

@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   console.log("[main page] js run");
 
+  const root = document.querySelector(".logger");
+
   const btnClose = document.querySelector(".btn-close");
   const btnBackShow = document.querySelector(".btn-back-show");
   const btnBackHide = document.querySelector(".btn-back-hide");
@@ -20,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function sendMessage(event) {
     console.log(event);
     // window.parent.postMessage(JSON.stringify(event), "https://web.max.ru");
-    window.WebViewHandler.postEvent(JSON.stringify(event), "https://web.max.ru");
+    // window.WebViewHandler.postEvent(JSON.stringify(event), "https://web.max.ru");
+    renderContent(window.WebViewHandler);
   }
 
   window.addEventListener("message", function (event) {
@@ -29,4 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(JSON.parse(event.data));
     }
   });
+
+  function renderContent(content) {
+    console.log(content);
+    const div = document.createElement("div");
+    div.textContent = content ? JSON.stringify(content) : "undefined";
+    root.appendChild(div);
+  }
 });

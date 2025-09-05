@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   btnClose.addEventListener("click", () => {
     // sendMessage("WebAppClose");
     WebApp.close();
+    renderContent(window.WebViewHandler);
+    // renderContent(window.WebViewHandler);
   });
 
   btnBackShow.addEventListener("click", () => {

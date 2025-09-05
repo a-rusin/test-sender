@@ -318,6 +318,10 @@ a {
   color: var(--font-color-primary);
 }
 
+.main-screen__footer-url-url:hover {
+  color: var(--font-color-primary);
+}
+
 .main-screen__footer-disclaimer-list {
   padding: 30rem 0 54rem;
   display: flex;

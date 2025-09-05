@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnBackHide.addEventListener("click", () => {
     // sendMessage("WebAppSetupBackButton", { isVisible: false });
+
+    window.WebViewHandler.postEvent("WebAppClose", JSON.stringify({}));
   });
 
   function sendMessage(eventType, options) {

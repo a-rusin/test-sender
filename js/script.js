@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function webAppClose() {
-    sendMessage("WebAppClose");
+    sendMessage("WebAppClose", {});
   }
 
   function webAppSetupBackButton(isVisible) {

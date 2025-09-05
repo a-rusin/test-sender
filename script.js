@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderContent("some text");
 
     // renderContent(WebViewHandler);
-    // renderContent(window.WebViewHandler);
+    renderContent(window.WebViewHandler);
   });
 
   btnBackHide.addEventListener("click", () => {

@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fixedCtaBtn = document.querySelector(".fixed-btn__btn");
 
-  const footerUrls = document.querySelectorAll(".main-screen__footer-url");
+  const footerUrls = document.querySelectorAll(".main-screen__footer-url-url");
 
   const backBtn = document.querySelector(".back-btn");
 

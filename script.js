@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // sendMessage("WebAppSetupBackButton", { isVisible: true });
     renderContent("some text");
 
-    renderContent(WebViewHandler);
-    renderContent(window.WebViewHandler);
+    // renderContent(WebViewHandler);
+    // renderContent(window.WebViewHandler);
   });
 
   btnBackHide.addEventListener("click", () => {

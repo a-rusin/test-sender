@@ -10,15 +10,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const app = window.WebViewHandler;
 
   btnClose.addEventListener("click", () => {
-    sendMessage("WebAppClose");
+    // sendMessage("WebAppClose");
+    WebApp.close();
   });
 
   btnBackShow.addEventListener("click", () => {
-    sendMessage("WebAppSetupBackButton", { isVisible: true });
+    // sendMessage("WebAppSetupBackButton", { isVisible: true });
   });
 
   btnBackHide.addEventListener("click", () => {
-    sendMessage("WebAppSetupBackButton", { isVisible: false });
+    // sendMessage("WebAppSetupBackButton", { isVisible: false });
   });
 
   function sendMessage(eventType, options) {
